@@ -45,6 +45,9 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         boolean subset= false;
+        if(str1.isEmpty()){
+            subset=true;
+        }
         for(int i=0;i<str1.length();i++){
            subset=false;
            for (int j=0;j<str2.length();j++){      
@@ -72,7 +75,7 @@ public class MyString {
     public static String spacedString(String str) {
         String str1="";
      for (int i=0;i<str.length();i++){
-        str1=str1+str.charAt(i) + " "  ;
+        str1=str1+" "+str.charAt(i)  ;
      }
         return str1;
     }
@@ -108,21 +111,32 @@ public class MyString {
      */
     public static String remove(String str1, String str2) {
         String removed= "";
-        for(int i=0;i<str1.length();i++){
-        boolean re=false;
-        for(int j=0;j<str2.length();j++){
-            if(str1.charAt(i)==str2.charAt(j)){
-                re=true;
-                break;
+        boolean re= false;
+        char[] str11=new char [str1.length()];
+        for(int i=0;i<str2.length();i++){
+            str11[i]=str2.charAt(i);
+        }
+        for(int j=0;j<str1.length();j++){
+            re=false;
+            for(int t=0;t<str2.length();t++){
+                if(str1.charAt(j)==str11[t]){
+                   str11[t]=0;
+                   re= true;
+                   break;
+                }      
+            }
+            if (re==false){
+            removed=removed+str1.charAt(j);
             }
         }
-        if(re==false){
-            removed=removed+str1.charAt(i);
-        }
-
-      }
         return removed;
-    }
+      }
+
+        
+    
+      
+       
+    
 
 
     /**
