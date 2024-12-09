@@ -45,28 +45,20 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         boolean subset= false;
-        String str3="";
+        char [] str11=new char[str2.length()];
         if(str1.isEmpty()){
             subset=true;
         }
-        for(int t=0;t<(str1.length()-1);t++){
-            boolean is= false;
-            for(int y=t+1;y<str1.length();y++){
-                if(str1.charAt(t)==str1.charAt(y)){
-                    is=true;
-                    break;
-            }
-
+        for(int t=0;t<str2.length();t++){
+            str11[t]=str2.charAt(t);
         }
-        if(is==false){
-            str3=str3+str1.charAt(t);
-        }
-    }
-        for(int i=0;i<str3.length();i++){
+    
+        for(int i=0;i<str1.length();i++){
            subset=false;
            for (int j=0;j<str2.length();j++){      
-               if(str3.charAt(i)==str2.charAt(j)){
+               if(str1.charAt(i)==str11[j]){
                    subset=true;
+                   str11[j]=0;
                    break;
                }
               
