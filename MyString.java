@@ -8,7 +8,7 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
-        System.out.println(subsetOf("abc","adbsbfc"));
+        System.out.println(subsetOf("pass","spaced"));
         System.out.println(randomStringOfLetters(8));
         System.out.println(remove("adbsbfc","abc"));
         //// Put your other tests here.
@@ -45,16 +45,28 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         boolean subset= false;
-        String a="";
+        String str3="";
         if(str1.isEmpty()){
             subset=true;
         }
-        for(int i=0;i<str1.length();i++){
+        for(int t=0;t<(str1.length()-1);t++){
+            boolean is= false;
+            for(int y=t+1;y<str1.length();y++){
+                if(str1.charAt(t)==str1.charAt(y)){
+                    is=true;
+                    break;
+            }
+
+        }
+        if(is==false){
+            str3=str3+str1.charAt(t);
+        }
+    }
+        for(int i=0;i<str3.length();i++){
            subset=false;
            for (int j=0;j<str2.length();j++){      
-               if(str1.charAt(i)==str2.charAt(j)){
+               if(str3.charAt(i)==str2.charAt(j)){
                    subset=true;
-                   remove(str2,(a+ str1.charAt(i)));
                    break;
                }
               
@@ -75,8 +87,8 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        String str1="";
-     for (int i=0;i<str.length();i++){
+        String str1=""+str.charAt(0);
+     for (int i=1;i<str.length();i++){
         str1=str1+" "+str.charAt(i)  ;
      }
         return str1;
@@ -96,7 +108,7 @@ public class MyString {
     public static String randomStringOfLetters(int n) {
         String random= "";
         for(int i=0;i<n;i++){
-        char ch= (char)(123-Math.random()*27);
+        char ch= (char)(123-Math.random()*26);
         random= random+ch;
     }
         return random;
