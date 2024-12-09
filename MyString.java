@@ -45,6 +45,7 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         boolean subset= false;
+        String a="";
         if(str1.isEmpty()){
             subset=true;
         }
@@ -53,6 +54,7 @@ public class MyString {
            for (int j=0;j<str2.length();j++){      
                if(str1.charAt(i)==str2.charAt(j)){
                    subset=true;
+                   remove(str2,(a+ str1.charAt(i)));
                    break;
                }
               
