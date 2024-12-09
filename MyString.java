@@ -8,6 +8,7 @@ public class MyString {
         System.out.println(countChar(hello, 'l'));
         System.out.println(countChar(hello, 'z'));
         System.out.println(spacedString(hello));
+        System.out.println(spacedString(""));
         System.out.println(subsetOf("pass","spaced"));
         System.out.println(randomStringOfLetters(8));
         System.out.println(remove("adbsbfc","abc"));
@@ -79,10 +80,13 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        String str1=""+str.charAt(0);
+      String str1="";
+        if(str.isEmpty()==false){
+         str1=str1+str.charAt(0);
      for (int i=1;i<str.length();i++){
         str1=str1+" "+str.charAt(i)  ;
      }
+    }
         return str1;
     }
   
