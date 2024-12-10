@@ -76,7 +76,7 @@ public class Scrabble {
 		if(word.length()==10){
 			score+=50;
 		}
-		if(subset("runi",word)==true){
+		if(subsetOf("runi",word)==true){
 			score+=1000;
 		}
 		return score;
@@ -93,15 +93,15 @@ public class Scrabble {
 	}
 
 	int e= (int)(Math.random()*9);
-	hand1[e]= "e";
+	hand1[e]= 'e';
 
 	int a= (int)(Math.random()*9);
 
 	if( a == e){
-		int a = (int)(Math.random()*9);
+		 a = (int)(Math.random()*9);
 	}
 
-	hand1[a]= "a";
+	hand1[a]= 'a';
 
 	String handfinal= "";
 
@@ -211,45 +211,91 @@ public class Scrabble {
 		//playHand("arbffip");
 		//playHand("aretiin");
 	}
-}
 
 
-
-
-
-
-
-
-public static String remove(String str1, String str2) {
-	String removed= "";
-	boolean re= false;
-	char[] str11=new char [str1.length()];
-	for(int i=0;i<str2.length();i++){
-		str11[i]=str2.charAt(i);
-	}
-	for(int j=0;j<str1.length();j++){
-		re=false;
-		for(int t=0;t<str2.length();t++){
-			if(str1.charAt(j)==str11[t]){
-			   str11[t]=0;
-			   re= true;
-			   break;
-			}      
+	public static String remove(String str1, String str2) {
+		String removed= "";
+		boolean re= false;
+		char[] str11=new char [str1.length()];
+		for(int i=0;i<str2.length();i++){
+			str11[i]=str2.charAt(i);
 		}
-		if (re==false){
-		removed=removed+str1.charAt(j);
+		for(int j=0;j<str1.length();j++){
+			re=false;
+			for(int t=0;t<str2.length();t++){
+				if(str1.charAt(j)==str11[t]){
+				   str11[t]=0;
+				   re= true;
+				   break;
+				}      
+			}
+			if (re==false){
+			removed=removed+str1.charAt(j);
+			}
 		}
-	}
-	return removed;
-
-  }
-
-  public static String randomStringOfLetters(int n) {
-	String random= "";
-	for(int i=0;i<n;i++){
-	char ch= (char)(123-Math.random()*26);
-	random= random+ch;
-}
-	return random;
-}
+		return removed;
 	
+	  }
+	
+	  public static String randomStringOfLetters(int n) {
+		String random= "";
+		for(int i=0;i<n;i++){
+		char ch= (char)(123-Math.random()*26);
+		random= random+ch;
+	}
+		return random;
+	}
+		
+	
+
+
+	public static boolean subsetOf(String str1, String str2) {
+        boolean subset= false;
+        char [] str11=new char[str2.length()];
+        if(str1.isEmpty()){
+            subset=true;
+        }
+        for(int t=0;t<str2.length();t++){
+            str11[t]=str2.charAt(t);
+        }
+    
+        for(int i=0;i<str1.length();i++){
+           subset=false;
+           for (int j=0;j<str2.length();j++){      
+               if(str1.charAt(i)==str11[j]){
+                   subset=true;
+                   str11[j]=0;
+                   break;
+               }
+              
+               }
+            
+        }
+
+       return subset;
+   }
+
+
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
